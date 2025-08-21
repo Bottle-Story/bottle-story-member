@@ -47,7 +47,7 @@ public class MemberTestController {
     @GetMapping("/devtest3")
     public String test3(){
         HashOperations<String, String, String> hashOps = redisTemplate.opsForHash();
-        Map<String, String> grpStCdMap = hashOps.entries(RedisKey.CM_CMC_TONE_CD);
+        Map<String, String> grpStCdMap = hashOps.entries(RedisKey.CM_EVENT_STATUS_CODE);
         List<String> keys = new ArrayList<>(grpStCdMap.keySet());
 
         for(String key2 : keys){
@@ -68,6 +68,12 @@ public class MemberTestController {
     @GetMapping("/devtest5")
     public ResponseEntity<Object> test5(int i){
        return null;
+
+    }
+
+    @GetMapping("/devtest10")
+    public ResponseEntity<Object> test7(){
+        return ResponseEntity.ok("test1123");
 
     }
 }

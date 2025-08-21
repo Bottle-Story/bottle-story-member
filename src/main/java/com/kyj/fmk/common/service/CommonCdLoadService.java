@@ -7,7 +7,6 @@ package com.kyj.fmk.common.service;
 public interface CommonCdLoadService {
 
     public void loadCmCd();
-    public void loadSkillCd();
-    public void loadDtyCd();
+
 }
 

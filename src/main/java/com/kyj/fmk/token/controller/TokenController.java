@@ -28,4 +28,16 @@ public class TokenController {
     public ResponseEntity<ResApiDTO<Void>> reissueToken(HttpServletRequest request, HttpServletResponse response){
         return tokenService.reissueToken(request,response);
     }
+
+    /**
+     * 회원인증여부 검증
+     *
+     *
+     * @return
+     */
+    @RequestMapping("/api/v1/member/isAuth")
+    public ResponseEntity<ResApiDTO<Void>> reissueToken(){
+        return ResponseEntity
+                .ok(new ResApiDTO<>(null));
+    }
 }

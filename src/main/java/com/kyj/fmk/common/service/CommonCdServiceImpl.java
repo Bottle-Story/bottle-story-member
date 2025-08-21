@@ -1,11 +1,7 @@
 package com.kyj.fmk.common.service;
 
 import com.kyj.fmk.core.model.cmcd.req.ReqCommonCdDTO;
-import com.kyj.fmk.core.model.cmcd.req.ReqDtyCdDTO;
-import com.kyj.fmk.core.model.cmcd.req.ReqSkillCdDTO;
 import com.kyj.fmk.core.model.cmcd.res.ResCommonCdDTO;
-import com.kyj.fmk.core.model.cmcd.res.ResDtyCdDTO;
-import com.kyj.fmk.core.model.cmcd.res.ResSkillCdDTO;
 import com.kyj.fmk.common.repository.CommonRepository;
 import com.kyj.fmk.core.exception.custom.KyjBizException;
 import com.kyj.fmk.core.model.CmCdConst;
@@ -61,17 +57,17 @@ public class CommonCdServiceImpl implements CommonCdService {
         if(reqCommonCdDTO.getCmCd()!=null){
 
             switch (reqCommonCdDTO.getCmCd()) {
-                case CmCdConst.APY_ST_CD:
+                case CmCdConst.BTL_STATUS_CODE:
                     break;
-                case CmCdConst.CMC_TONE_CD:
+                case CmCdConst.EVENT_STATUS_CODE:
                     break;
-                case CmCdConst.MT_STY_CD:
+                case CmCdConst.OCEAN_CODE:
                     break;
-                case CmCdConst.GRP_ST_CD:
+                case CmCdConst.PARTICLE_CODE:
                     break;
-                case CmCdConst.TEAM_STY_CD:
+                case CmCdConst.SKY_CODE:
                     break;
-                case CmCdConst.RECRUIT_ST_CD:
+                case CmCdConst.TIME_CODE:
                     break;
                 default:
                     throw new KyjBizException(MemErrCode.MEM001);

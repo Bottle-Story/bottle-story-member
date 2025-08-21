@@ -25,22 +25,7 @@ public class MemberController {
     /**
      * 추가정보 입력후 리다이렉트 될 페이지
      */
-    @Value("${spring.security.oauth2.login.success-url}")
-    private String successUrl;
     
-    private final JWTUtil jwtUtil;
 
-    /**
-     * 추가정보 입력을 위한페이지에서 회원가입 요청
-     * @param request
-     * @param response
-     * @throws IOException
-     */
-    @GetMapping("join")
-    @PublicEndpoint
-    public void join(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String joinJwt =(String)CookieUtil.getCookie("joinJwt", request);
-        String usrId = jwtUtil.getUsrId(joinJwt);
-        response.sendRedirect(successUrl);
-    }
+
 }
