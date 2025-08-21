@@ -62,7 +62,7 @@ spring:
             client-name: kakao
             client-id: ${KAKAO_CLIENT_ID}
             client-secret: ""
-            redirect-uri: https://bottle-story-dev.com.com:31443/login/oauth2/code/kakao
+            redirect-uri: https://bottle-story-dev.com:31443/login/oauth2/code/kakao
             authorization-grant-type: authorization_code
             scope:
               - account_email
