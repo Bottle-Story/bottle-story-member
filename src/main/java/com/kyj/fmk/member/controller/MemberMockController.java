@@ -60,7 +60,7 @@ public class MemberMockController {
         //성공시 응답
         response.addHeader(HttpHeaders.SET_COOKIE, responseAccessCookie.toString());
         response.addHeader(HttpHeaders.SET_COOKIE, responseRefreshCookie.toString());
-        response.sendRedirect("/");
+        response.sendRedirect("https://bottle-story-dev.com:31443/");
     }
 
 
