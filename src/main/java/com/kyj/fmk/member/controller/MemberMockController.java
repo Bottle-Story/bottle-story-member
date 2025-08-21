@@ -1,6 +1,7 @@
 package com.kyj.fmk.member.controller;
 
 import com.kyj.fmk.core.util.CookieUtil;
+import com.kyj.fmk.sec.annotation.PublicEndpoint;
 import com.kyj.fmk.sec.jwt.JWTUtil;
 import com.kyj.fmk.sec.service.TokenService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,6 +35,7 @@ public class MemberMockController {
     private final JWTUtil jwtUtil;
     private final TokenService tokenRedisService;
     @PostMapping("mock/login")
+    @PublicEndpoint
     public void mockLogin(HttpServletResponse response) throws IOException {
         String usrId = "admin";
         String usrSeqId = "99999999999";
