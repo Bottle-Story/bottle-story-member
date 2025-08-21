@@ -48,19 +48,7 @@
     </insert>
 
 
-    <insert id="insertMemberSkill" parameterType="MemberDTO">
-        INSERT INTO MEMBER_SKILL
-        (
-          SKILL_CD
-        , USR_SEQ_ID
-        )
-        VALUES
-        (
-        #{email}
-        , #{skillCd}
-        , #{usrSeqId}
-        )
-    </insert>
+
 
 
     <insert id="updateMember" parameterType="MemberDTO">

@@ -7,9 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyj.fmk.common.service.CommonCdService;
 import com.kyj.fmk.core.model.CmCdConst;
 import com.kyj.fmk.core.model.cmcd.req.ReqCommonCdDTO;
-import com.kyj.fmk.core.model.cmcd.req.ReqSkillCdDTO;
 import com.kyj.fmk.core.model.cmcd.res.ResCommonCdDTO;
-import com.kyj.fmk.core.model.cmcd.res.ResSkillCdDTO;
 import com.kyj.fmk.core.model.dto.ResApiDTO;
 import com.kyj.fmk.core.redis.RedisKey;
 import com.kyj.fmk.core.service.cmcd.CmCdRedisService;
@@ -60,24 +58,4 @@ public class CommonController {
     }
 
 
-    @GetMapping("skillList")
-    @PublicEndpoint
-    public ResponseEntity<ResApiDTO<List<ResSkillCdDTO>>> selectSkillList(ReqSkillCdDTO reqSkillCdDTO) throws JsonProcessingException {
-        List<ResSkillCdDTO>  list = new ArrayList<>();
-
-        if(reqSkillCdDTO.getSkillCd() == null){
-            Map<String, ResSkillCdDTO> map = cmCdRedisService.selectRedisSkillAllMap();
-
-            map.keySet().forEach(key ->{
-                ResSkillCdDTO value = map.get(key);
-                list.add(value);
-            });
-
-        }else{
-            ResSkillCdDTO resSkillCdDTO = cmCdRedisService.selectRedisSkillEachMap(reqSkillCdDTO);
-            list.add(resSkillCdDTO);
-        }
-        return ResponseEntity.ok()
-                .body(new ResApiDTO<>(list));
-    }
 }

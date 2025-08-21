@@ -82,8 +82,8 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
       login:
-        success-url: http://localhost:3000/suctemp
-        addition-info-url: http://localhost:3000/additiontemp
+        success-url: http://localhost:3000/
+        addition-info-url: http://localhost:3000/
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
@@ -121,3 +121,4 @@ management:
   health:
     readinessstate:
       enabled: true          # readiness 상태를 별도로 관리
+
