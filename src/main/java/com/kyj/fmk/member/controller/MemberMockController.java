@@ -57,7 +57,7 @@ public class MemberMockController {
         ResponseCookie responseAccessCookie= CookieUtil.createCookie("Authorization",access, 5 * 60,"/");
         ResponseCookie responseRefreshCookie= CookieUtil.createCookie("refresh",refresh,604800,"/");
 
-        //성공시 응답
+        //성공시 응답8718
         response.addHeader(HttpHeaders.SET_COOKIE, responseAccessCookie.toString());
         response.addHeader(HttpHeaders.SET_COOKIE, responseRefreshCookie.toString());
     }

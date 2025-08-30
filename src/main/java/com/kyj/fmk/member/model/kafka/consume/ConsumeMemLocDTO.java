@@ -1,4 +1,4 @@
-package com.kyj.fmk.member.model;
+package com.kyj.fmk.member.model.kafka.consume;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ReqLocDTO {
+public class ConsumeMemLocDTO {
 
     private String usrSeqId;
     private double lat;

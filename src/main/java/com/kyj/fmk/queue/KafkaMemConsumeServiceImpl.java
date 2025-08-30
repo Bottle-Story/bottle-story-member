@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyj.fmk.core.exception.custom.KyjSysException;
 import com.kyj.fmk.core.model.KafkaTopic;
 import com.kyj.fmk.core.model.enm.CmErrCode;
-import com.kyj.fmk.member.model.ReqLocDTO;
+import com.kyj.fmk.member.model.kafka.consume.ConsumeMemLocDTO;
 import com.kyj.fmk.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -37,9 +37,9 @@ public class KafkaMemConsumeServiceImpl implements KafkaMemConsumeService{
     )
     public void consumeMemberLocation(ConsumerRecord<String, String> record, Acknowledgment ack) {
         String json =  record.value();
-        ReqLocDTO reqLocDTO = null;
+        ConsumeMemLocDTO reqLocDTO = null;
         try {
-            reqLocDTO = objectMapper.readValue(json,ReqLocDTO.class);
+            reqLocDTO = objectMapper.readValue(json, ConsumeMemLocDTO.class);
 
         } catch (JsonProcessingException e) {
             throw new KyjSysException(CmErrCode.CM016);

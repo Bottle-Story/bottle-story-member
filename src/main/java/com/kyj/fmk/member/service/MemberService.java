@@ -1,6 +1,6 @@
 package com.kyj.fmk.member.service;
 
-import com.kyj.fmk.member.model.ReqLocDTO;
+import com.kyj.fmk.member.model.kafka.consume.ConsumeMemLocDTO;
 
 /**
  * 2025-08-28
@@ -9,5 +9,5 @@ import com.kyj.fmk.member.model.ReqLocDTO;
  */
 public interface MemberService {
 
-    public void saveMemberLoc(ReqLocDTO reqLocDTO);
+    public void saveMemberLoc(ConsumeMemLocDTO reqLocDTO);
 }

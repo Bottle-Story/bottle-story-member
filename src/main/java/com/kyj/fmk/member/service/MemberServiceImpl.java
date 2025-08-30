@@ -1,7 +1,7 @@
 package com.kyj.fmk.member.service;
 
 import com.kyj.fmk.core.redis.RedisKey;
-import com.kyj.fmk.member.model.ReqLocDTO;
+import com.kyj.fmk.member.model.kafka.consume.ConsumeMemLocDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService{
      * @param reqLocDTO
      */
     @Override
-    public void saveMemberLoc(ReqLocDTO reqLocDTO) {
+    public void saveMemberLoc(ConsumeMemLocDTO reqLocDTO) {
 
         redisTemplate.opsForGeo().add(
                 RedisKey.GEO_MEMBER,
