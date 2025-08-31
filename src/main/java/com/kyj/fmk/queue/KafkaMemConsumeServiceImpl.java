@@ -46,6 +46,7 @@ public class KafkaMemConsumeServiceImpl implements KafkaMemConsumeService{
         }
 
         memberService.saveMemberLoc(reqLocDTO);
+        ack.acknowledge();
 
     }
 }

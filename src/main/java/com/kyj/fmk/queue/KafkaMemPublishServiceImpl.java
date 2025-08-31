@@ -43,7 +43,6 @@ public class KafkaMemPublishServiceImpl implements KafkaMemPublishService{
 
         }
         kafkaTemplate.send(logoutKafkaDTO.getTopic(),data);
-        System.out.println("logoutKafkaDTO = " + logoutKafkaDTO);
     }
 }
 
