@@ -1,17 +1,13 @@
 package com.kyj.fmk.member.controller;
 
-import com.kyj.fmk.core.util.CookieUtil;
-import com.kyj.fmk.sec.annotation.PublicEndpoint;
-import com.kyj.fmk.sec.jwt.JWTUtil;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.kyj.fmk.member.model.kafka.KafkaLogoutDTO;
+import com.kyj.fmk.queue.KafkaMemPublishService;
+import com.kyj.fmk.sec.dto.oauth2.CustomOAuth2User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 /**
  * 2025-08-10
@@ -22,25 +18,21 @@ import java.io.IOException;
 @RequestMapping("/api/v1/member/")
 @RequiredArgsConstructor
 public class MemberController {
-    /**
-     * 추가정보 입력후 리다이렉트 될 페이지
-     */
-    @Value("${spring.security.oauth2.login.success-url}")
-    private String successUrl;
-    
-    private final JWTUtil jwtUtil;
+
+    private final KafkaMemPublishService kafkaMemPublishService;
 
     /**
-     * 추가정보 입력을 위한페이지에서 회원가입 요청
-     * @param request
-     * @param response
-     * @throws IOException
+     * 회원 로그아웃 전 선행 처리될 api
+     * @param customOAuth2User
      */
-    @GetMapping("join")
-    @PublicEndpoint
-    public void join(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String joinJwt =(String)CookieUtil.getCookie("joinJwt", request);
-        String usrId = jwtUtil.getUsrId(joinJwt);
-        response.sendRedirect(successUrl);
+    @PutMapping("/pre/logout")
+    public void preLogout(@AuthenticationPrincipal CustomOAuth2User customOAuth2User){
+        KafkaLogoutDTO logoutKafkaDTO = new KafkaLogoutDTO(String.valueOf(customOAuth2User.getUsrSeqId()));
+
+        kafkaMemPublishService.puplishMemberLogout(logoutKafkaDTO);
+
     }
+
+
+
 }

@@ -21,37 +21,5 @@
                    AND CMC.US_YN = 'Y'
     </select>
 
-
-
-    <select id="skillCdList" resultType="ResSkillCdDTO" parameterType="ReqSkillCdDTO">
-        /* com.kyj.fmk.common.mapper.CommonMapper.skillCdlist 기술스택 조회 */
-        SELECT CSC.SKILL_CD
-             , CSC.SKILL_NM
-             , CSC.SKILL_CD_IMG
-          FROM CM_SKILL_CD CSC
-         WHERE 1=1
-        <if test="skillCd != null and skillCd != ''">
-               AND CSC.SKILL_CD = #{skillCd}
-        </if>
-        <if test="dtyCd != null and dtyCd != ''">
-               AND CSC.DTY_CD = #{dtyCd}
-        </if>
-               AND CSC.US_YN  = 'Y'
-    </select>
-
-
-
-    <select id="dtyCdList" resultType="ResDtyCdDTO" parameterType="ReqDtyCdDTO">
-        /* com.kyj.fmk.common.mapper.CommonMapper.dtyCdList 직무코드 조회 */
-        SELECT CDC.DTY_CD
-             , CDC.DTY_NM
-             , CDC.DTY_CD_IMG
-          FROM CM_DTY_CD CDC
-         WHERE 1=1
-        <if test="dtyCd != null and dtyCd != ''">
-               AND CDC.DTY_CD = #{dtyCd}
-        </if>
-               AND CDC.US_YN  = 'Y'
-    </select>
 </mapper>
 
